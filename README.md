@@ -1,75 +1,90 @@
 # LUMIN
 
-LUMIN is an educational chatbot web app with a React + Vite frontend and a Python backend. It helps caregivers and children interact through guided stories, emotion tracking, and audio features.
+LUMIN is an educational chatbot web app for caregivers and children. It combines a React + Vite frontend with a Python backend to deliver guided stories, emotion tracking, and audio interactions.
 
-**Key tech:** Vite, React, Tailwind CSS, Python, Flask/FastAPI (backend), Supabase (data schema included)
+**Tech stack:** React, Vite, Tailwind CSS, Python (backend), Supabase (optional)
 
-## Quick Start
+## Features
+- Guided storytelling engine
+- Emotion tracking and badges
+- Voice/audio playback and recording
+- Simple caregiver dashboard and kid-facing UI
 
-Prerequisites:
-- Node.js (16+)
-- Python 3.10+
-- Optional: a virtual environment tool (venv)
+## Quick start (development)
 
-Frontend
+Prerequisites
+- Node.js 16+ (for frontend)
+- Python 3.10+ (for backend)
+- Recommended: use a virtual environment for Python (`venv`)
+
+1) Frontend
 
 ```bash
-# install dependencies
+# from project root
+cd ./
 npm install
-
-# run development server
-npm run dev
-
-# build for production
-npm run build
-
-# preview production build
-npm run preview
+npm run dev      # starts Vite dev server (frontend)
 ```
 
-Backend
+Build for production
 
 ```bash
-# create & activate venv (example for Windows PowerShell)
+npm run build
+npm run preview  # preview production build locally
+```
+
+2) Backend (Windows PowerShell example)
+
+```powershell
+# create & activate venv
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 
-# install Python dependencies
+# install deps and run
 pip install -r backend/requirements.txt
-
-# run backend
 python backend/main.py
 ```
 
-Tests
+3) Tests
 
 ```bash
-# run Python tests (if pytest is installed)
+# run Python tests
 pytest backend/test_chat.py
 ```
 
-Project layout
+## Environment variables
+Use `.env` locally (not committed). An example file is provided as `.env.example`.
 
-- [src/](src/) — React source (components, hooks, pages)
-- [index.html](index.html) — app entry
-- [package.json](package.json) — frontend scripts & deps
-- [backend/main.py](backend/main.py) — Python backend entry
-- [backend/requirements.txt](backend/requirements.txt) — backend deps
-- [data/](data/) — app data files (memories, story states)
+Typical variables (add as needed):
+- `GROQ_API_KEY` — Groq / external API key
+- `SUPABASE_URL` — Supabase instance URL
+- `SUPABASE_ANON_KEY` — Supabase anon key
+- `OPENAI_API_KEY` — OpenAI key (if used)
 
-Database / Schema
+Never commit real secrets — add them to your environment or use a secrets manager.
 
-A Supabase schema for caregiver/patient is available at [backend/supabase_caregiver_patient_schema.sql](backend/supabase_caregiver_patient_schema.sql).
+## Project layout
+- `src/` — React source (components, hooks, pages)
+- `backend/` — Python backend (entry: `backend/main.py`)
+- `data/` — persisted app data (memories, story states)
+- `index.html`, `package.json`, `vite.config.js`, `tailwind.config.js`
 
-Environment & Secrets
+## Database / Schema
+Supabase schema for caregivers/patients: [backend/supabase_caregiver_patient_schema.sql](backend/supabase_caregiver_patient_schema.sql)
 
-- Keep API keys and secrets out of the repo. Use environment variables or a secrets manager.
+## Security note
+A sensitive key was previously committed and has been removed from the repository history. If you cloned the repo before this cleanup, please re-clone to avoid the old history. Also rotate any keys exposed previously — removal from history does not revoke the key.
 
-Contributing
+## Deployment (brief)
+- Build the frontend (`npm run build`) and serve the static files from a web server.
+- Start the backend with your chosen Python host (or containerize with Docker if desired).
 
-Contributions are welcome. Open an issue to discuss features or fixes, then submit a pull request with focused changes.
+## Contributing
+Open an issue to discuss changes, then submit a focused pull request. Please avoid committing secrets and run `npm ci`/`pip install` in fresh environments.
 
-License
+## License
+MIT — change if you prefer a different license.
 
-This project is licensed under the MIT License — adjust as needed.
+---
 
+If you'd like I can: add a short development checklist for new contributors, add GitHub Actions to run tests on PRs, or create a `docs/` folder with API notes. Tell me which you'd prefer next.
