@@ -82,9 +82,3 @@ A sensitive key was previously committed and has been removed from the repositor
 ## Contributing
 Open an issue to discuss changes, then submit a focused pull request. Please avoid committing secrets and run `npm ci`/`pip install` in fresh environments.
 
-## License
-MIT — change if you prefer a different license.
-
----
-
-If you'd like I can: add a short development checklist for new contributors, add GitHub Actions to run tests on PRs, or create a `docs/` folder with API notes. Tell me which you'd prefer next.
